@@ -257,10 +257,13 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
     (NSString *)kUTTypeMPEG4
   ];
   imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
+  imagePickerController.videoExportPreset = AVAssetExportPresetPassthrough;
 
   if (maxDurationSeconds) {
     NSTimeInterval max = [maxDurationSeconds doubleValue];
     imagePickerController.videoMaximumDuration = max;
+    //show native editor screen for crop longer max duration
+    imagePickerController.allowsEditing = YES;
   }
 
   self.callContext = context;
